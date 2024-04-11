@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Latte;
@@ -22,6 +23,8 @@ class CafeKioskTest {
         System.out.println(">>> 담긴 음료 : " + cafeKiosk.getBeverages().get(0).getName());
     }
 
+    //    @DisplayName("음료 1개 추가 테스트")
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.") //테스트명을 문장 형태로 구체화.(문서처럼 활용해라)
     @Test
     //자동화테스트 : 기계가 테스트함
     void add(){
@@ -83,7 +86,9 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산한다.")
     void calculateTotalPrice(){
+        // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -91,8 +96,10 @@ class CafeKioskTest {
         cafeKiosk.add(americano);
         cafeKiosk.add(latte);
 
+        // when
         int totalPrice = cafeKiosk.calculateTotalPrice();
 
+        // then
         assertThat(totalPrice).isEqualTo(8500);
     }
 
@@ -108,8 +115,10 @@ class CafeKioskTest {
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
-    @Test
-    //예외 케이스 : 운영시간 외 주문 (9시 59분)
+    @Test //예외 케이스 : 운영시간 외 주문 (9시 59분)
+//    @DisplayName("특정 시간 이전에 주문을 생성하면 실패한다.")  //테스트의 현상을 중점으로 기술하지 말 것.
+    @DisplayName("영업 시작 시간 이전에는 주문을 생성할 수 없다.") //(키오스크가 사용하는)도메인 용어를 사용하기.
+                                                            // -> 📌 메서드 자체의 관점보다는 도메인 정책 관점으로
     void createOrderOutsideOpenTime(){
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
