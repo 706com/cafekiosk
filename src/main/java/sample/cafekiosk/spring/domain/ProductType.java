@@ -13,5 +13,4 @@ public enum ProductType {
 
     //설명 필드
     private final String text;
-
 }
