@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import sample.cafekiosk.spring.domain.Product;
-import sample.cafekiosk.spring.domain.ProductSellingType;
+import sample.cafekiosk.spring.domain.ProductSellingStatus;
 import sample.cafekiosk.spring.domain.ProductType;
 
 @Getter
@@ -20,19 +20,19 @@ public class ProductResponse {
 
     private ProductType type;
 
-    private ProductSellingType sellingType;
+    private ProductSellingStatus sellingStatus;
 
     private String name;
 
     private int price;
 
     @Builder
-    private ProductResponse(Long id, String productNumber, ProductType type, ProductSellingType sellingType, String name,
+    private ProductResponse(Long id, String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name,
                            int price) {
         this.id = id;
         this.productNumber = productNumber;
         this.type = type;
-        this.sellingType = sellingType;
+        this.sellingStatus = sellingStatus;
         this.name = name;
         this.price = price;
     }
@@ -42,7 +42,7 @@ public class ProductResponse {
                 .id(product.getId())
                 .productNumber(product.getProductNumber())
                 .type(product.getType())
-                .sellingType(product.getSellingType())
+                .sellingStatus(product.getSellingStatus())
                 .name(product.getName())
                 .price(product.getPrice())
                 .build();
