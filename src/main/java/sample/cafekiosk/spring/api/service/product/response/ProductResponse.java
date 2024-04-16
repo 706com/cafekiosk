@@ -1,15 +1,10 @@
 package sample.cafekiosk.spring.api.service.product.response;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
-import sample.cafekiosk.spring.domain.Product;
-import sample.cafekiosk.spring.domain.ProductSellingStatus;
-import sample.cafekiosk.spring.domain.ProductType;
+import sample.cafekiosk.spring.domain.product.Product;
+import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
+import sample.cafekiosk.spring.domain.product.ProductType;
 
 @Getter
 public class ProductResponse {
